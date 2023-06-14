@@ -4,24 +4,14 @@ public class Categoria {
     private int codiCate;
     private String nombCate;
     private Categoria sig;
-    private Categoria ant;
 
     public Categoria() {
     }
 
-    public Categoria(int codiCate, String nombCate, Categoria sig, Categoria ant) {
+    public Categoria(int codiCate, String nombCate, Categoria sig) {
         this.codiCate = codiCate;
         this.nombCate = nombCate;
         this.sig = sig;
-        this.ant = ant;
-    }
-
-    public Categoria getAnt() {
-        return ant;
-    }
-
-    public void setAnt(Categoria ant) {
-        this.ant = ant;
     }
 
     public int getCodiCate() {

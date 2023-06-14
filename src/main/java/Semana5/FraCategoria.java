@@ -37,9 +37,10 @@ public class FraCategoria extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
-        btnOrdenar = new javax.swing.JButton();
+        btnOrdenarPorCodigo = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAreaLista = new javax.swing.JTextArea();
+        btnOrdenarPorNombre = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,21 +61,28 @@ public class FraCategoria extends javax.swing.JFrame {
             }
         });
 
-        btnOrdenar.setText("Ordenar");
-        btnOrdenar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnOrdenarPorCodigo.setText("Ordenar (Codigo)");
+        btnOrdenarPorCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnOrdenarMouseClicked(evt);
+                btnOrdenarPorCodigoMouseClicked(evt);
             }
         });
-        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
+        btnOrdenarPorCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrdenarActionPerformed(evt);
+                btnOrdenarPorCodigoActionPerformed(evt);
             }
         });
 
         txtAreaLista.setColumns(20);
         txtAreaLista.setRows(5);
         jScrollPane2.setViewportView(txtAreaLista);
+
+        btnOrdenarPorNombre.setText("Ordenar (Nombre)");
+        btnOrdenarPorNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarPorNombreActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,7 +94,9 @@ public class FraCategoria extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnOrdenar))
+                        .addComponent(btnOrdenarPorCodigo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnOrdenarPorNombre))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCodigo)
@@ -112,7 +122,8 @@ public class FraCategoria extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
-                    .addComponent(btnOrdenar))
+                    .addComponent(btnOrdenarPorCodigo)
+                    .addComponent(btnOrdenarPorNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -139,16 +150,23 @@ public class FraCategoria extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
+    private void btnOrdenarPorCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarPorCodigoActionPerformed
         cateDAO.ordenarPorCodigo();
         listarEnTextArea();
         
         JOptionPane.showMessageDialog(rootPane, "Se ordeno correctamente");
-    }//GEN-LAST:event_btnOrdenarActionPerformed
+    }//GEN-LAST:event_btnOrdenarPorCodigoActionPerformed
 
-    private void btnOrdenarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdenarMouseClicked
+    private void btnOrdenarPorCodigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrdenarPorCodigoMouseClicked
  
-    }//GEN-LAST:event_btnOrdenarMouseClicked
+    }//GEN-LAST:event_btnOrdenarPorCodigoMouseClicked
+
+    private void btnOrdenarPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarPorNombreActionPerformed
+        cateDAO.ordenarPorNombre();
+        listarEnTextArea();
+        
+        JOptionPane.showMessageDialog(rootPane, "Se ordeno correctamente");
+    }//GEN-LAST:event_btnOrdenarPorNombreActionPerformed
     
     public void listarEnTextArea(){
         txtAreaLista.setText(cateDAO.leer());
@@ -192,7 +210,8 @@ public class FraCategoria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnOrdenar;
+    private javax.swing.JButton btnOrdenarPorCodigo;
+    private javax.swing.JButton btnOrdenarPorNombre;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblNombre;

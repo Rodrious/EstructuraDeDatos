@@ -58,5 +58,27 @@ public class CategoriaDAO {
             actual = actual.getSig();
         }
     }
+    //Metodo de ordenamiento por burbuja
+    public void ordenarPorNombre(){
+        boolean cambio;
+        do{
+            cambio = false;
+            Categoria temp = raiz;
+            while (temp!=null && temp.getSig()!=null) {                
+                Categoria siguiente = temp.getSig();
+                if (temp.getNombCate().compareToIgnoreCase(siguiente.getNombCate())>0) {
+                    String tempNombre = temp.getNombCate();
+                    temp.setNombCate(siguiente.getNombCate());
+                    siguiente.setNombCate(tempNombre);
+                    
+                    int tempCodi = temp.getCodiCate();
+                    temp.setCodiCate(siguiente.getCodiCate());
+                    siguiente.setCodiCate(tempCodi);
+                    cambio =true;
+                }
+                temp=temp.getSig();
+            }
+        }while(cambio);
+    }
 
 }
