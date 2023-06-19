@@ -41,6 +41,7 @@ public class Mat {
     }
 
     //Funcion para encontrar el maximo valor de un arreglo
+    //n representa el total del arreglo (tamaño)
     public static int encontrarMaximo(int[] arr, int n) {
         if (n == 1) {
             return arr[0];
