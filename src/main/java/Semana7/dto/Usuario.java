@@ -1,7 +1,7 @@
-
 package Semana7.dto;
 
-public class Usuario {
+public class Usuario implements Comparable {
+
     private int codigo;
     private String nombres;
 
@@ -28,5 +28,11 @@ public class Usuario {
     public void setNombres(String nombres) {
         this.nombres = nombres;
     }
-    
+
+    @Override
+    public int compareTo(Object o) {
+        int codigoTemp = ((Usuario) o).getCodigo();
+        return this.getCodigo() - codigoTemp;
+    }
+
 }
