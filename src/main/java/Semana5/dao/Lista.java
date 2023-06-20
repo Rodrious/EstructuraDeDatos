@@ -41,23 +41,22 @@ public class Lista {
                 nodoActual = nodoActual.getSig();
             }
             nodoActual.setSig(null);
-            ultimo = nodoActual; 
+            ultimo = nodoActual;
         }
     }
-    
-    public void eliminarPrimero() {
-    if (raiz == null) {
-        // La lista está vacía, no hay nada que eliminar
-        return;
-    } else if (raiz == ultimo) {
-        // Solo hay un nodo en la lista, se elimina y se establecen raiz y ultimo a null
-        raiz = ultimo = null;
-    } else {
-        // La lista tiene más de un nodo
-        raiz = raiz.getSig();
-    }
-}
 
+    public void eliminarPrimero() {
+        if (raiz == null) {
+            // La lista está vacía, no hay nada que eliminar
+            return;
+        } else if (raiz == ultimo) {
+            // Solo hay un nodo en la lista, se elimina y se establecen raiz y ultimo a null
+            raiz = ultimo = null;
+        } else {
+            // La lista tiene más de un nodo
+            raiz = raiz.getSig();
+        }
+    }
 
     public void leer() {
         Nodo p = raiz;
