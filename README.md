@@ -22,9 +22,6 @@ El repositorio se organiza por semanas, cada una de las cuales corresponde a una
 
 Si eres estudiante del curso, puedes revisar los códigos y ejemplos para comprender los conceptos cubiertos en cada semana. Si tienes alguna pregunta o duda, no dudes en abrir un problema o enviar un correo electrónico.
 
-## Contribuciones
-
-Si encuentras errores, quieres agregar ejemplos adicionales o mejorar el código existente, ¡te invitamos a contribuir! Puedes hacerlo mediante pull requests. Asegúrate de seguir las pautas de contribución (si las hay) antes de enviar tus cambios.
 
 ## Aviso Legal
 
