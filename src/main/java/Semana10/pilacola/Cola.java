@@ -14,6 +14,18 @@ public class Cola {
         return cola.poll();
     }
     
+    public int cima(){
+        return cola.peek();
+    }
+    
+    public boolean estaVacia(){
+        return cola.isEmpty();
+    }
+    
+    public int tamanio(){
+        return cola.size();
+    }
+    
     public void mostrar(){
         for (Integer integer : cola) {
             System.out.println("|\t\t" + integer + "\t\t|");
