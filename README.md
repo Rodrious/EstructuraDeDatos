@@ -1,6 +1,6 @@
 # Repositorio del Curso de Estructuras de Datos con Programación Orientada a Objetos
 
-Este repositorio contiene el código Java desarrollado durante el curso de Estructuras de Datos con Programación Orientada a Objetos en la Universidad [Nombre de tu Universidad].
+Este repositorio contiene el código Java desarrollado durante el curso de Estructuras de Datos con Programación Orientada a Objetos en la Universidad Nacional José Faustino Sánchez Carrión.
 
 ## Descripción del Curso
 
