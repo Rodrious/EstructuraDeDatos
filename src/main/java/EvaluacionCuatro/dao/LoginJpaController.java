@@ -1,8 +1,11 @@
-package EvaluacionDemo.dao;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package EvaluacionCuatro.dao;
 
-import EvaluacionDemo.dao.exceptions.NonexistentEntityException;
-import EvaluacionDemo.dao.exceptions.PreexistingEntityException;
-import EvaluacionDemo.dto.Persona;
+import EvaluacionCuatro.dao.exceptions.NonexistentEntityException;
+import EvaluacionCuatro.dto.Login;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -13,32 +16,31 @@ import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-public class PersonaJpaController implements Serializable {
+/**
+ *
+ * @author ACER
+ */
+public class LoginJpaController implements Serializable {
 
-    public PersonaJpaController(EntityManagerFactory emf) {
+    public LoginJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_EstructuraDeDatos_jar_1.0-SNAPSHOTPU");
 
-    public PersonaJpaController() {
+    public LoginJpaController() {
     }
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public void create(Persona persona) throws PreexistingEntityException, Exception {
+    public void create(Login login) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(persona);
+            em.persist(login);
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findPersona(persona.getNdniPers()) != null) {
-                throw new PreexistingEntityException("Persona " + persona + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();
@@ -46,19 +48,19 @@ public class PersonaJpaController implements Serializable {
         }
     }
 
-    public void edit(Persona persona) throws NonexistentEntityException, Exception {
+    public void edit(Login login) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            persona = em.merge(persona);
+            login = em.merge(login);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                String id = persona.getNdniPers();
-                if (findPersona(id) == null) {
-                    throw new NonexistentEntityException("The persona with id " + id + " no longer exists.");
+                Integer id = login.getCodiAlu();
+                if (findLogin(id) == null) {
+                    throw new NonexistentEntityException("The login with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -69,19 +71,19 @@ public class PersonaJpaController implements Serializable {
         }
     }
 
-    public void destroy(String id) throws NonexistentEntityException {
+    public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Persona persona;
+            Login login;
             try {
-                persona = em.getReference(Persona.class, id);
-                persona.getNdniPers();
+                login = em.getReference(Login.class, id);
+                login.getCodiAlu();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The persona with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The login with id " + id + " no longer exists.", enfe);
             }
-            em.remove(persona);
+            em.remove(login);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -90,19 +92,19 @@ public class PersonaJpaController implements Serializable {
         }
     }
 
-    public List<Persona> findPersonaEntities() {
-        return findPersonaEntities(true, -1, -1);
+    public List<Login> findLoginEntities() {
+        return findLoginEntities(true, -1, -1);
     }
 
-    public List<Persona> findPersonaEntities(int maxResults, int firstResult) {
-        return findPersonaEntities(false, maxResults, firstResult);
+    public List<Login> findLoginEntities(int maxResults, int firstResult) {
+        return findLoginEntities(false, maxResults, firstResult);
     }
 
-    private List<Persona> findPersonaEntities(boolean all, int maxResults, int firstResult) {
+    private List<Login> findLoginEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Persona.class));
+            cq.select(cq.from(Login.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -114,20 +116,20 @@ public class PersonaJpaController implements Serializable {
         }
     }
 
-    public Persona findPersona(String id) {
+    public Login findLogin(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Persona.class, id);
+            return em.find(Login.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getPersonaCount() {
+    public int getLoginCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Persona> rt = cq.from(Persona.class);
+            Root<Login> rt = cq.from(Login.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
@@ -136,4 +138,19 @@ public class PersonaJpaController implements Serializable {
         }
     }
     
+    public Login iniciarSesion(String logi, String pass){
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createNamedQuery("Login.validar");
+            q.setParameter("logiAlu", logi);
+            q.setParameter("passAlu", pass);
+            return (Login) q.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+    
 }
+ 

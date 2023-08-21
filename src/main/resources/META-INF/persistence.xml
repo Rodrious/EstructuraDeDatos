@@ -4,8 +4,12 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Semana12.dto.Persona</class>
     <class>Semana12.dto.Usuario</class>
+    <class>EvaluacionCuatro.dto.Alumno</class>
+    <class>EvaluacionCuatro.dto.Login</class>
+    <class>EvaluacionDemo.dto.Persona</class>
+    <class>EvaluacionDemo.dto.Usuario</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/poo?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/examenparcial?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="2363201"/>
