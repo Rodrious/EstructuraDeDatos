@@ -29,6 +29,6 @@ El código contenido en este repositorio es proporcionado con fines educativos y
 
 ## Contacto
 
-Si tienes preguntas específicas sobre el contenido del curso o el código en este repositorio, puedes ponerte en contacto conmigo a través de mi correo electrónico: rodriousbig73@gmail.com
+Si tienes preguntas específicas sobre el contenido del curso o el código en este repositorio, puedes ponerte en contacto conmigo a través de mi correo electrónico: rodrious@icloud.com
 
 ¡Espero que este repositorio sea útil para tu aprendizaje y disfrutes programando con estructuras de datos y POO! 🚀
